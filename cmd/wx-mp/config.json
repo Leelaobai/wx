@@ -1,0 +1,10 @@
+{
+    "port":"8788",
+    "api_key": "sk-123456",
+    "wx_app_id": "123456",
+    "wx_token":"123456",
+    "app_secret":"123456",
+    "encoding_AESKey":"123456"
+  }
+  
+  
