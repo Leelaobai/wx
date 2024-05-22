@@ -60,7 +60,7 @@ func serveWechat(rw http.ResponseWriter, req *http.Request) {
 
 func handler(msg *message.MixMessage) *message.Reply {
 
-	text := message.NewText("success")
+	text := message.NewText("")
 
 	if msg.MsgType == "text" {
 
