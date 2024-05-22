@@ -7,6 +7,7 @@ import (
 	"strings"
 	"sync"
 	"time"
+	persistence "wx/Persistence"
 	"wx/chat"
 	"wx/cmd/wx-mp/config"
 
@@ -181,6 +182,7 @@ func handler(msg *message.MixMessage) *message.Reply {
 
 func main() {
 	chat.Init(config.LoadConfig().ApiKey)
+	persistence.InitDB()
 	port := ":" + config.LoadConfig().HttpPort
 	http.HandleFunc("/", serveWechat)
 	fmt.Println("wechat server listener at", port)
