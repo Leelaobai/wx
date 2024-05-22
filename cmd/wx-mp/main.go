@@ -70,6 +70,7 @@ func handler(msg *message.MixMessage) *message.Reply {
 				log.Println("ERROR: ", err)
 				greply = "请稍后重试。"
 			}
+			log.Println("返回的答复长为：", len(greply), "内容为：", greply)
 			manager := officialAccount.GetCustomerMessageManager()
 			err = manager.Send(message.NewCustomerTextMessage(string(msg.FromUserName), greply))
 			if err != nil {
