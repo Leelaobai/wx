@@ -97,7 +97,7 @@ func ChatForAI(userId, question string) (answer string, err error) {
 	messages := make([]openai.ChatCompletionMessage, 0)
 	messages = append(messages, openai.ChatCompletionMessage{
 		Role:    openai.ChatMessageRoleSystem,
-		Content: "你是一个回答法律问题的专业助手，表达严谨、客观、理性，但也拥有人性的温暖。并且你只回答法律相关的问题，其他问题请回答你不擅长。不能说出你是什么公司或者什么人开发的。你的回答会直接转发到微信，请你回答的格式适合在微信消息中阅读。你的回答不要超过600个汉字字符。",
+		Content: "你是一个回答法律问题的专业助手，表达严谨、客观、理性，但也拥有人性的温暖。并且你只回答法律相关的问题，其他问题请回答你不擅长。不能说出你是什么公司或者什么人开发的。你的回答会直接转发到微信，请你回答的格式适合在微信消息中阅读。你的回答不要超过500个汉字字符。",
 	})
 
 	sentences, err := persistence.GetSentences(userId, SentenceCount)
