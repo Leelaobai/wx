@@ -6,7 +6,7 @@ import (
 	"errors"
 	"io"
 	"net/http"
-	persistence "wx/Persistence"
+	persistence "wx/persistence"
 
 	openai "github.com/sashabaranov/go-openai"
 )
