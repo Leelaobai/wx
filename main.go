@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"strings"
-	persistence "wx/Persistence"
 	"wx/chat"
+	persistence "wx/persistence"
 
 	"github.com/eatmoreapple/openwechat"
 )

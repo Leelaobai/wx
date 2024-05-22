@@ -7,9 +7,9 @@ import (
 	"strings"
 	"sync"
 	"time"
-	persistence "wx/Persistence"
 	"wx/chat"
 	"wx/cmd/wx-mp/config"
+	persistence "wx/persistence"
 
 	wechat "github.com/silenceper/wechat/v2"
 	"github.com/silenceper/wechat/v2/officialaccount/message"
