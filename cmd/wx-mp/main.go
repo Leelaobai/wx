@@ -75,9 +75,14 @@ func handler(msg *message.MixMessage) *message.Reply {
 			gr := []rune(greply)
 			maxLen := 500
 			i := 0
-			for l := len(gr); l > 0; l = l - maxLen {
+			grL := len(gr)
+			for l := grL; l > 0; l = l - maxLen {
+				rightIndex := i + maxLen
+				if rightIndex > grL {
+					rightIndex = grL
+				}
 				manager := officialAccount.GetCustomerMessageManager()
-				err = manager.Send(message.NewCustomerTextMessage(string(msg.FromUserName), string(gr[i:i+maxLen])))
+				err = manager.Send(message.NewCustomerTextMessage(string(msg.FromUserName), string(gr[i:rightIndex])))
 				if err != nil {
 					log.Println("发送客服消息失败：", err.Error())
 					return
