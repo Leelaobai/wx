@@ -71,11 +71,20 @@ func handler(msg *message.MixMessage) *message.Reply {
 				greply = "请稍后重试。"
 			}
 			log.Println("返回的答复长为：", len(greply), "内容为：", greply)
-			manager := officialAccount.GetCustomerMessageManager()
-			err = manager.Send(message.NewCustomerTextMessage(string(msg.FromUserName), greply))
-			if err != nil {
-				log.Println("发送客服消息失败：", err.Error())
+
+			gr := []rune(greply)
+			maxLen := 500
+			i := 0
+			for l := len(gr); l > 0; l = l - maxLen {
+				manager := officialAccount.GetCustomerMessageManager()
+				err = manager.Send(message.NewCustomerTextMessage(string(msg.FromUserName), string(gr[i:i+maxLen])))
+				if err != nil {
+					log.Println("发送客服消息失败：", err.Error())
+					return
+				}
+				i += maxLen
 			}
+
 		}()
 	}
 
