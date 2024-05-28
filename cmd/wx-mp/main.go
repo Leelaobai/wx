@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"sync"
 	"wx/chat"
 	"wx/cmd/wx-mp/config"
 	persistence "wx/persistence"
@@ -18,22 +17,9 @@ import (
 	"github.com/silenceper/wechat/v2/cache"
 )
 
-var nonceMap sync.Map
 var officialAccount *officialaccount.OfficialAccount
 
 func serveWechat(rw http.ResponseWriter, req *http.Request) {
-	//b, err := ioutil.ReadAll(req.Body)
-	//if err != nil {
-	//	log.Println("读取body失败：", err)
-	//	return
-	//}
-	//log.Println("读取body：", string(b))
-	nonce := req.URL.Query()["nonce"][0]
-	_, loaded := nonceMap.LoadOrStore(nonce, true)
-	if loaded {
-		log.Println("收到已经存在的nonce：", req.URL.String())
-		return
-	}
 
 	wc := wechat.NewWechat()
 	memory := cache.NewMemory()
